@@ -1,0 +1,49 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="get-request-params">
+
+  <template>
+
+  </template>
+
+  <script>
+    class StarterElement extends Polymer.Element {
+      static get is() { 
+        return 'get-request-params';
+      }
+      static get properties() {
+        return {
+			url : {
+				type : String
+			},
+            requestParameters : {
+				type: Object,			
+				notify: true,
+				reflectToAttribute:true,
+				computed : 'findRequestParametersFromURL(url)'
+		  }
+        }
+      }
+      constructor() {
+        super();
+      }
+	  findRequestParametersFromURL(url){
+
+		var qs  = url.split('+').join(' '),
+			params = {},
+			tokens,
+			re = /[?&]?([^=]+)=([^&]*)/g;
+
+		while (tokens = re.exec(qs)) {
+			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+		}
+		return params;
+	  }
+      
+    }
+
+    customElements.define(StarterElement.is, StarterElement);
+  </script>
+
+</dom-module>
+

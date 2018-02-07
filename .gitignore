@@ -24,4 +24,4 @@ nbdist/
 .nb-gradle/
 
 ### Polymer ###
-WebContent/bower_components
+#WebContent/bower_components

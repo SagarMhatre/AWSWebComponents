@@ -1,0 +1,36 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/elements/get-request-params/get-request-params.html">
+
+<dom-module id="get-request-params-from-address-bar">
+
+  <template>
+    <get-request-params url='[[url]]' request-parameters='{{requestParameters}}' ></get-request-params>	
+  </template>
+
+  <script>
+    class GetRequestParamsFromURL extends Polymer.Element {
+      static get is() { 
+        return 'get-request-params-from-address-bar';
+      }
+      static get properties() {
+        return {
+			url : {
+				type : String
+				},
+            requestParameters : {
+				type: Object,
+				reflectToAttribute:true,
+				}
+			}
+      }
+      constructor() {
+        super();
+			this.url = document.location.search;
+		}      
+    }
+
+    customElements.define(GetRequestParamsFromURL.is, GetRequestParamsFromURL);
+  </script>
+
+</dom-module>
+

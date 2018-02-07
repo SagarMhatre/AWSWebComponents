@@ -1,0 +1,40 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="../get-request-params-from-address-bar.html">
+<link rel="import" href="/elements/x-json/x-json.html">
+
+<dom-module id="demo-element">
+  <template>
+    <style>
+      :host {
+        font-family: sans-serif;
+      }
+    </style>
+  
+  
+    <h3> Go to get-request-params-from-address-bar/demo/index.html?a=123&b=321%202223</h3>
+	<br>
+	Copy from https://github.com/chris-l/x-json/tree/master/src to /elements/x-json folder
+	<br>
+	
+    <get-request-params-from-address-bar request-parameters='{{requestParameters}}' ></get-request-params-from-address-bar>
+	<x-json data='{{requestParameters}}'></x-json>
+
+  </template>
+
+  <script>
+    class DemoElement extends Polymer.Element {
+		static get is() { return 'demo-element' }
+		static get properties() {
+        return {
+            requestParameters : {
+				type: Object
+				}
+			}
+		}
+		constructor() {
+			super();
+		}		
+    }
+    customElements.define(DemoElement.is, DemoElement);
+    </script>
+</dom-module>
